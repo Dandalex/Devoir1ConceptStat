@@ -1,0 +1,20 @@
+# INF-5103 - Devoir I
+# Environnement du notebook d'analyse.
+#
+#   python3 -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+
+# Manipulation des donnees et calcul
+pandas>=2.2
+numpy>=1.26
+
+# Tests statistiques et correlations (pearsonr, spearmanr, ttest, chi2)
+scipy>=1.13
+
+# Figures du rapport
+matplotlib>=3.8
+
+# Notebook exige par l'enonce
+jupyterlab>=4.2
+ipykernel>=6.29

@@ -440,3 +440,8 @@ FodyWeavers.xsd
 *.lot
 *.fls
 *.fdb_latexmk
+
+# Environnement virtuel Python
+.venv/
+__pycache__/
+.ipynb_checkpoints/
