@@ -1,0 +1,274 @@
+% =====================================================================
+%  INF-5103 -- Concepts Statistiques pour la Science des Donnees
+%  Devoir I -- Analyse statistique de quatre jeux de donnees
+%
+%  Fichier autonome : la classe uqo-memoire n'est PAS utilisee (elle est
+%  faite pour un memoire de 100 pages et en consommait 10 a vide). Seul
+%  son STYLE est repris : page de garde officielle, marges, en-tete
+%  courant filete, conventions typographiques francaises.
+%
+%  CONTRAINTE : SIX PAGES MAXIMUM, page de garde comprise.
+%
+%  Compilation :  tectonic rapport.tex     (ou pdflatex deux fois)
+%  Figures en PDF ou PNG -- pas d'EPS, tectonic ne les lit pas.
+% =====================================================================
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage[left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+% --- Style repris du modele UQO --------------------------------------
+
+% En-tete courant filete : titre de section a gauche, page a droite.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\nouppercase{\rightmark}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\sectionmark}[1]{\markright{\thesection~--~#1}}
+
+% Pas de veuves ni d'orphelines (comme la classe du memoire).
+\widowpenalty=10000
+\clubpenalty=10000
+
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+
+% --- Outils de redaction ---------------------------------------------
+
+% Texte temporaire, bien visible : AUCUN placeholder ne doit survivre a
+% la remise.   Verification :  grep -c 'ph{' rapport.tex   ->  0
+\newcommand{\ph}[1]{{\color{gray}\itshape [#1]}}
+
+% Intitule de question en retrait de paragraphe : compact, et chaque
+% question de l'enonce reste reperable d'un coup d'oeil.
+\newcommand{\qst}[1]{\paragraph{#1.}}
+
+% Inclut la figure si elle existe, sinon dessine un cadre temoin : le
+% document compile avant meme que les figures soient produites.
+\newcommand{\figplace}[2][0.62\textwidth]{%
+  \IfFileExists{#2}{\includegraphics[width=#1]{#2}}%
+  {\fbox{\parbox[c][0.32\textwidth][c]{#1}{\centering\ttfamily\small
+   \detokenize{#2}\\[2pt]\normalfont\rmfamily (figure a produire)}}}%
+}
+
+% --- A personnaliser -------------------------------------------------
+\newcommand{\etudiant}{Alex D'Andrea}
+\newcommand{\matricule}{DANA21079300}
+\newcommand{\titredev}{Analyse statistique de quatre jeux de données}
+\newcommand{\coursdev}{INF-5103 -- Concepts statistiques pour la science des données}
+\newcommand{\enseignant}{Mohamed Lamine Allaoui}
+\newcommand{\datedev}{9 Octobre 2026}
+% ---------------------------------------------------------------------
+
+\begin{document}
+
+% =====================================================================
+%  PAGE DE GARDE  (mise en page du modele de memoire de l'UQO)
+% =====================================================================
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{\fill}
+
+{\MakeUppercase{\bfseries Université du Québec en Outaouais}\par}
+\vspace{0.3cm}
+{Département d'informatique et d'ingénierie\par}
+
+\vspace{1.5cm}
+{\large\scshape Devoir I\par}
+
+\vspace{0.8cm}
+\rule{\linewidth}{0.8pt}\\[0.5cm]
+{\large\MakeUppercase{\titredev}\par}
+\vspace{0.5cm}
+\rule{\linewidth}{0.8pt}
+
+\vspace{1.5cm}
+TRAVAIL PRÉSENTÉ\par
+DANS LE CADRE DU COURS\par
+\MakeUppercase{\coursdev}
+
+\vspace{2cm}
+PAR\par
+\vspace{0.4cm}
+{\MakeUppercase{\etudiant}\par}
+{Matricule : \matricule\par}
+
+\vspace{1.5cm}
+{Travail individuel remis à\par \enseignant\par}
+
+\vspace{1.5cm}
+\MakeUppercase{\datedev}
+
+\vspace*{\fill}
+\end{titlepage}
+
+% =====================================================================
+\section{Plateforme d'apprentissage en ligne}
+% Q1-Q5 : taux global, taux par niveau, paradoxe de Simpson,
+%         standardisation par les effectifs du groupe entier, autre variable.
+
+\qst{Taux de réussite global (Q1)}
+\ph{Les deux taux bruts, l'écart, et la méthode que ces seuls chiffres
+désigneraient.}
+
+\qst{Taux par niveau initial (Q2)}
+\ph{Lecture du tableau~\ref{tab:jeu1-niveau} en une ou deux phrases.}
+
+\begin{table}[H]
+  \centering\small
+  \caption{Taux de réussite par méthode et par niveau initial.}
+  \label{tab:jeu1-niveau}
+  \begin{tabular}{lrrrr}
+    \toprule
+    Niveau initial & $n_A$ & Taux A & $n_B$ & Taux B\\
+    \midrule
+    Débutant       &  &  &  & \\
+    Intermédiaire  &  &  &  & \\
+    Avancé         &  &  &  & \\
+    \midrule
+    Global         &  &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\qst{Confrontation des questions 1 et 2 (Q3)}
+\ph{D'où vient la différence : raisonner sur la répartition des effectifs
+entre niveaux, pas seulement sur les taux.}
+
+\qst{Taux standardisés (Q4)}
+\ph{Taux pondérés par les effectifs de l'ensemble du groupe, puis la
+recommandation finale à la direction de la plateforme.}
+
+\qst{Reprise avec une autre variable (Q5)}
+\ph{Variable retenue parmi \textsf{age}, \textsf{region} et
+\textsf{heures\_etude} ; comparaison avec le résultat de Q2 et commentaire.}
+
+% =====================================================================
+\section{Consommation électrique d'un immeuble de bureaux}
+% Q1-Q6 : correlation, nuage de points, correlation par groupe de
+%         temperature, minimum, occupation/jour_ferie, lecon sur r.
+
+\qst{Corrélation température--consommation (Q1)}
+\ph{Valeur de $r$ et son interprétation en une phrase.}
+
+\qst{Nuage de points (Q2)}
+\ph{Forme du nuage et confrontation avec la valeur de $r$ obtenue en Q1.}
+
+\begin{figure}[H]
+  \centering
+  \figplace{figures/jeu2_nuage.pdf}
+  \caption{Consommation quotidienne en fonction de la température extérieure.}
+  \label{fig:jeu2-nuage}
+\end{figure}
+
+\qst{Corrélation de part et d'autre d'un seuil (Q3)}
+\ph{Seuil de température choisi et sa justification ; $r$ dans chacun des
+deux groupes, comparé à Q1.}
+
+\qst{Température de consommation minimale (Q4)}
+\ph{Température du minimum et explication physique de la forme observée.}
+
+\qst{Rôle de l'occupation et des jours fériés (Q5)}
+\ph{Part de la consommation expliquée par \textsf{occupation\_pct} et
+\textsf{jour\_ferie}, puis vérification de leur lien avec la température
+-- et pourquoi cette seconde vérification est nécessaire.}
+
+\qst{Ce que ce jeu apprend sur le coefficient de corrélation (Q6)}
+\ph{Ce qu'il faut retenir quant à l'usage de $r$.}
+
+% =====================================================================
+\section{Dossiers de patients d'une clinique}
+% Q1-Q6 : description et anomalies, nettoyage documente, moyenne/mediane
+%         de l'age, correlation age-tension avant/apres, IMC, tabagisme.
+
+\qst{Description et anomalies détectées (Q1)}
+\ph{Description statistique de chaque colonne numérique, minimum et maximum
+compris ; anomalies détaillées au tableau~\ref{tab:jeu3-anomalies}.}
+
+\begin{table}[H]
+  \centering\small
+  \caption{Anomalies relevées : nature, volume et méthode de détection.}
+  \label{tab:jeu3-anomalies}
+  \begin{tabular}{llrl}
+    \toprule
+    Colonne & Nature de l'anomalie & Lignes & Détection\\
+    \midrule
+     &  &  & \\
+     &  &  & \\
+     &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\qst{Préparation des données (Q2)}
+\ph{Chaque décision documentée : ce qui est retiré, ce qui est corrigé, et
+le nombre de lignes restantes.}
+
+\qst{Âge : moyenne et médiane, avant et après (Q3)}
+\ph{Les quatre valeurs et un commentaire sur les écarts.}
+
+\qst{Corrélation âge--tension systolique, avant et après (Q4)}
+\ph{Les deux valeurs de $r$ et un commentaire.}
+
+\qst{Indice de masse corporelle (Q5)}
+\ph{Classes d'IMC retenues et tension systolique moyenne dans chacune.}
+\[ \mathrm{IMC} = \frac{\text{poids (kg)}}{\bigl(\text{taille (m)}\bigr)^{2}} \]
+
+\qst{Tabagisme et sexe (Q6)}
+\ph{Une réponse appuyée sur un chiffre pour le tabagisme, une autre pour
+le sexe.}
+
+% =====================================================================
+\section{Temps de réponse d'un service web}
+% Q1-Q4 : moyenne/mediane/p95, histogrammes lin et log, explication de
+%         la forme, choix d'un indicateur unique.
+
+\qst{Moyenne, médiane et 95\textsuperscript{e} centile (Q1)}
+\ph{Les trois valeurs, le nombre de requêtes situées à moins de 10\,\% de la
+moyenne, et ce que ce dénombrement apprend sur la moyenne comme résumé.}
+
+\qst{Histogrammes en échelle linéaire et logarithmique (Q2)}
+\ph{Ce que chaque représentation permet de voir.}
+
+\begin{figure}[H]
+  \centering
+  \figplace[0.46\textwidth]{figures/jeu4_hist_lin.pdf}\hfill
+  \figplace[0.46\textwidth]{figures/jeu4_hist_log.pdf}
+  \caption{Distribution des latences : échelle linéaire (gauche) et
+  logarithmique (droite).}
+  \label{fig:jeu4-hist}
+\end{figure}
+
+\qst{Origine de la forme observée (Q3)}
+\ph{Explication trouvée dans les autres colonnes, chiffres à l'appui ; puis
+les pistes examinées et écartées, avec les mesures qui ont conduit à les
+écarter.}
+
+\qst{Indicateur unique à mettre sous surveillance (Q4)}
+\ph{L'indicateur retenu et les raisons de ce choix.}
+
+% =====================================================================
+%  Categorie 2 de l'enonce : declarer l'outil et ce qu'il a produit.
+%  Une declaration honnete n'entraine aucune penalite.
+% =====================================================================
+\section*{Déclaration d'utilisation de l'intelligence artificielle}
+\markright{Déclaration d'utilisation de l'intelligence artificielle}
+
+\ph{Outil(s) utilisé(s), puis ce que l'outil a produit : génération de code,
+aide à la rédaction, reformulation. L'analyse, l'interprétation et les
+conclusions sont personnelles.}
+
+\end{document}

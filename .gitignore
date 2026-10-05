@@ -429,3 +429,14 @@ FodyWeavers.xsd
 
 # PDF files
 *.pdf
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk

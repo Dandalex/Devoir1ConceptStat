@@ -1,0 +1,37 @@
+{
+  // LaTeX Workshop appelait "latexmk", absent de ce WSL : il n'y a pas de
+  // distribution TeX installee cote Linux. Tectonic l'est (~/.local/bin) et
+  // telecharge lui-meme les paquets manquants, d'ou cette recette.
+  "latex-workshop.latex.tools": [
+    {
+      "name": "tectonic",
+      "command": "tectonic",
+      "args": [
+        "-X",
+        "compile",
+        "--synctex",
+        "--keep-logs",
+        "--keep-intermediates",
+        "%DOC_EXT%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "tectonic",
+      "tools": ["tectonic"]
+    }
+  ],
+  "latex-workshop.latex.outDir": "%DIR%",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.log",
+    "*.out",
+    "*.synctex.gz",
+    "*.toc",
+    "*.lof",
+    "*.lot"
+  ]
+}
