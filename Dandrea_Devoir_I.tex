@@ -143,12 +143,27 @@ PAR\par
 %         standardisation par les effectifs du groupe entier, autre variable.
 
 \qst{Taux de réussite global (Q1)}
+
 % Cles disponibles pour cette question, produites par le notebook :
 %   \val{jeu1-n-a}  \val{jeu1-n-b}  \val{jeu1-taux-a}  \val{jeu1-taux-b}
 %   \val{jeu1-ecart}
 % Les inserer dans la redaction plutot que de retaper les chiffres.
-\ph{Les deux taux bruts, l'écart, et la méthode que ces seuls chiffres
-désigneraient.}
+Le tableau suivant présante le taux de réussite global pour les deux méthodes.
+Il estdonc possible que la méthode A ait un meilleur taux de réussite globale.
+Si on regarde uniquement cette information, la méthode A serait a recommander.
+\begin{table}[H]
+  \centering\small
+  \caption{Taux de réussite global par méthode.}
+  \label{tab:jeu1-global}
+  \begin{tabular}{lrr}
+    \toprule
+    Méthode & $n$ & Taux\\
+    \midrule
+    A & \val{jeu1-n-a} & \val{jeu1-taux-a}\%\\
+    B & \val{jeu1-n-b} & \val{jeu1-taux-b}\%\\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \qst{Taux par niveau initial (Q2)}
 \ph{Lecture du tableau~\ref{tab:jeu1-niveau} en une ou deux phrases.}
@@ -295,6 +310,8 @@ les pistes examinées et écartées, avec les mesures qui ont conduit à les
 
 L'IA génératif Claude à été utilisé pour ce devoir.
 L'outil a principalement été utilisé pour la production de gabarit pour le document LaTex pour le rapport ainsi que la relecture.
+L'outil a préparé les fonctions qui servent a exporter les résultats pour importation rapide dans le rapport .tex.
+
 L'utilisation d'IA détaillées peut être consulté selon les commit au depot git.
 Chaque étape produit par l'outil est dans son propre commit avec la signature a cette effet.
 
