@@ -63,6 +63,28 @@
    \detokenize{#2}\\[2pt]\normalfont\rmfamily (figure a produire)}}}%
 }
 
+% --- Chiffres et tableaux produits par le notebook -------------------
+% Le notebook ecrit resultats/valeurs.tex ; chaque \val{cle} y pioche
+% son chiffre. Aucun nombre n'est recopie a la main dans ce fichier :
+% il suffit de reexecuter le notebook pour que le rapport suive.
+% Une cle absente s'affiche en rouge dans le PDF au lieu de casser la
+% compilation, donc on repere tout de suite ce qui manque.
+\newcommand{\val}[1]{%
+  \ifcsname val@#1\endcsname
+    \csname val@#1\endcsname
+  \else
+    {\color{red}\bfseries[?#1]}%
+  \fi}
+\IfFileExists{resultats/valeurs.tex}{\input{resultats/valeurs.tex}}{}
+
+% Tableau genere par le notebook (pandas .to_latex), meme principe :
+% \tbl{nom} charge resultats/nom.tex, quel que soit le nom.
+\newcommand{\tbl}[1]{%
+  \IfFileExists{resultats/#1.tex}{\input{resultats/#1.tex}}%
+  {\fbox{\parbox{0.8\textwidth}{\centering\ttfamily\small
+   \detokenize{resultats/#1.tex}\\[2pt]\normalfont\rmfamily
+   (tableau a produire par le notebook)}}}}
+
 % --- A personnaliser -------------------------------------------------
 \newcommand{\etudiant}{Alex D'Andrea}
 \newcommand{\matricule}{DANA21079300}
@@ -121,6 +143,10 @@ PAR\par
 %         standardisation par les effectifs du groupe entier, autre variable.
 
 \qst{Taux de réussite global (Q1)}
+% Cles disponibles pour cette question, produites par le notebook :
+%   \val{jeu1-n-a}  \val{jeu1-n-b}  \val{jeu1-taux-a}  \val{jeu1-taux-b}
+%   \val{jeu1-ecart}
+% Les inserer dans la redaction plutot que de retaper les chiffres.
 \ph{Les deux taux bruts, l'écart, et la méthode que ces seuls chiffres
 désigneraient.}
 
