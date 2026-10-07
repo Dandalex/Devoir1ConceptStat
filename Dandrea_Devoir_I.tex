@@ -26,6 +26,7 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{fancyhdr}
+\usepackage{wrapfig}
 \usepackage[hidelinks]{hyperref}
 
 % --- Style repris du modele UQO --------------------------------------
@@ -142,28 +143,26 @@ PAR\par
 % Q1-Q5 : taux global, taux par niveau, paradoxe de Simpson,
 %         standardisation par les effectifs du groupe entier, autre variable.
 
-\qst{Taux de réussite global (Q1)}
+\subsection{Taux de réussite global (Q1)}
+
+
+\noindent
+\begin{minipage}[c]{0.55\textwidth}
 
 % Cles disponibles pour cette question, produites par le notebook :
 %   \val{jeu1-n-a}  \val{jeu1-n-b}  \val{jeu1-taux-a}  \val{jeu1-taux-b}
 %   \val{jeu1-ecart}
 % Les inserer dans la redaction plutot que de retaper les chiffres.
-Le tableau suivant présante le taux de réussite global pour les deux méthodes.
+Le tableau suivant présente le taux de réussite global pour les deux méthodes.
 Il estdonc possible que la méthode A ait un meilleur taux de réussite globale.
 Si on regarde uniquement cette information, la méthode A serait a recommander.
-\begin{table}[H]
-  \centering\small
-  \caption{Taux de réussite global par méthode.}
-  \label{tab:jeu1-global}
-  \begin{tabular}{lrr}
-    \toprule
-    Méthode & $n$ & Taux\\
-    \midrule
-    A & \val{jeu1-n-a} & \val{jeu1-taux-a}\%\\
-    B & \val{jeu1-n-b} & \val{jeu1-taux-b}\%\\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.42\textwidth}
+  \centering
+  \figplace[\linewidth]{figures/jeu1_reussite.pdf}
+  \captionof{figure}{Taux de réussite globale.}
+  \label{fig:jeu1-reussite}
+\end{minipage}
 
 \qst{Taux par niveau initial (Q2)}
 \ph{Lecture du tableau~\ref{tab:jeu1-niveau} en une ou deux phrases.}
