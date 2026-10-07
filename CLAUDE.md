@@ -47,6 +47,13 @@ rephrasing), say so, so the student can mention it in the report's AI declaratio
 6. **Commits:** only when asked. Each AI-produced step gets its **own commit** with the
    `Co-Authored-By` signature. The report's AI declaration section relies on this, so never
    mix student work and AI work in the same commit.
+7. **Sign generated code with a comment.** Every block of code Claude writes starts with a
+   signature comment, in French, saying what was generated. This applies to notebook cells,
+   LaTeX, and snippets given in chat for the student to paste:
+   - Python: `# [IA] Code généré par Claude : <description courte>`
+   - LaTeX: `% [IA] Code généré par Claude : <description courte>`
+   - When the student later edits a signed block, leave the signature in place. Mark it as
+     modified (e.g. `... (modifié par l'étudiant)`) only if the student asks.
 
 ## Files
 
