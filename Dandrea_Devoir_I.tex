@@ -166,16 +166,27 @@ Si on regarde uniquement cette information, la méthode A serait a recommander.
 \end{minipage}
 
 \subsection{Taux par niveau initial (Q2)}
-TEXT
-% [IA] Code généré par Claude : insertion du tableau généré par le notebook
-\begin{table}[H]
+
+% [IA] Code généré par Claude : tableau et figure côte à côte (Q2)
+\noindent
+\begin{minipage}[c]{0.44\textwidth}
   \centering\small
-  \caption{Taux de réussite par niveau initial.}
+  \captionof{table}{Résultats par niveau initial.}
   \label{tab:jeu1-niveau}
   \tbl{jeu1-Q1}
-\end{table}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.54\textwidth}
+  \centering
+  \figplace[\linewidth]{figures/jeu1_niveau.pdf}
+  \captionof{figure}{Résultats par niveau initial.}
+  \label{fig:jeu1-niveau}
+\end{minipage}
+Après regard sur le niveau initial, on constate que la méthode B est testé sur un bien plus grand nombre d'étudiants débutants que la méthode A.
+On constate que la méthode B est plus de deux fois plus efficace que la méthode A pour les étudiants débutants.
+En fait, elle est plus efficace pour tout les niveaux.
+Avec cette analyse, on recommande donc la méthode B.
 
-\qst{Confrontation des questions 1 et 2 (Q3)}
+\subsection{Confrontation des questions 1 et 2 (Q3)}
 \ph{D'où vient la différence : raisonner sur la répartition des effectifs
 entre niveaux, pas seulement sur les taux.}
 
