@@ -236,15 +236,21 @@ Une comparaison avec les niveau initiaux par région serait nécessaire pour con
 Le coefficient de corrélation de la température et de la consommation est de $r = \val{correlation-coef}$.
 Ce coefficient est positif, mais très faible, indiquant une corrélation positive quasi-nul.
 
-\qst{Nuage de points (Q2)}
-\ph{Forme du nuage et confrontation avec la valeur de $r$ obtenue en Q1.}
+\subsection{Nuage de points (Q2)}
+\begin{minipage}[c]{0.45\textwidth}
 
-\begin{figure}[H]
+Le nuage de points de la figure \ref{fig:jeu2-correlation} montre la relation entre la température et la consommation.
+On constate que la consommation d'énergie diminue avec l'augementation de la température, jusqu'à environ 17 degrées Celsius.
+À partir de ce point, la consommation d'énergie augmente avec l'augementation de la température.
+Ceci semble refleter le fait que l'immeuble est chauffé lorsque la température est basse, et refroidi lorsque la température est élevée.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.55\textwidth}
   \centering
-  \figplace{figures/jeu2_nuage.pdf}
-  \caption{Consommation quotidienne en fonction de la température extérieure.}
-  \label{fig:jeu2-nuage}
-\end{figure}
+  \figplace[\linewidth]{figures/jeu2_nuage_conso_temperature.pdf}
+  \captionof{figure}{Taux de réussite par région.}
+  \label{fig:jeu2-correlation}
+\end{minipage}
+
 
 \qst{Corrélation de part et d'autre d'un seuil (Q3)}
 \ph{Seuil de température choisi et sa justification ; $r$ dans chacun des
