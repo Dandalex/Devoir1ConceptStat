@@ -247,14 +247,26 @@ Ceci semble refleter le fait que l'immeuble est chauffé lorsque la température
 \begin{minipage}[c]{0.55\textwidth}
   \centering
   \figplace[\linewidth]{figures/jeu2_nuage_conso_temperature.pdf}
-  \captionof{figure}{Taux de réussite par région.}
+  \captionof{figure}{Nuage de points : consommation en fonction de la température.}
   \label{fig:jeu2-correlation}
 \end{minipage}
 
 
-\qst{Corrélation de part et d'autre d'un seuil (Q3)}
-\ph{Seuil de température choisi et sa justification ; $r$ dans chacun des
-deux groupes, comparé à Q1.}
+\subsection{Corrélation de part et d'autre d'un seuil (Q3)}
+\begin{minipage}[c]{0.55\textwidth}
+
+Pour trouver le seuil de température qui maximise la corrélation, nous avons calculé les coefficients de corrélation pour des seuils variant de 15 à 20 degrées Celsius.
+Nous avons fait le totaux des coefficients de corrélation pour les températures inférieures et supérieures à chaque seuil, en inversant le signe du coefficient pour les températures inférieures.
+Le seuil de température qui maximise la corrélation est de \val{seuil-optimal} degrées Celsius.
+Le coefficient de corrélation pour les températures inférieures à ce seuil est de \val{coef-froid}, et pour les températures supérieures à ce seuil est de \val{coef-chaud}.
+La figure \ref{fig:jeu2_coefs_par_seuil} montre ces coefficients pour différents seuils.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.40\textwidth}
+  \centering
+  \figplace[\linewidth]{figures/jeu2_coefs_par_seuil.pdf}
+  \captionof{figure}{Coefficients de corrélation par seuil de température.}
+  \label{fig:jeu2_coefs_par_seuiln}
+\end{minipage}
 
 \qst{Température de consommation minimale (Q4)}
 \ph{Température du minimum et explication physique de la forme observée.}
