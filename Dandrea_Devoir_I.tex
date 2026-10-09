@@ -154,7 +154,7 @@ PAR\par
 %   \val{jeu1-n-a}  \val{jeu1-n-b}  \val{jeu1-taux-a}  \val{jeu1-taux-b}
 %   \val{jeu1-ecart}
 % Les inserer dans la redaction plutot que de retaper les chiffres.
-Le tableau suivant présente le taux de réussite global pour les deux méthodes.
+La figure suivante présente le taux de réussite global pour les deux méthodes.
 Il estdonc possible que la méthode A ait un meilleur taux de réussite globale.
 Si on regarde uniquement cette information, la méthode A serait a recommander.
 \end{minipage}\hfill
@@ -192,9 +192,24 @@ On constate que la méthode A est testé sur un bien plus grand nombre d'étudia
 Cela donne un plus grand nombre de réussites pour la méthode A, mais ce n'est pas représentatif de l'efficacité de la méthode.
 Vue que la méthode B est plus efficace pour tout les niveaux, on recommande donc la méthode B.
 
-\qst{Taux standardisés (Q4)}
-\ph{Taux pondérés par les effectifs de l'ensemble du groupe, puis la
-recommandation finale à la direction de la plateforme.}
+\subsection{Taux standardisés (Q4)}
+\begin{minipage}[c]{0.55\textwidth}
+
+% Cles disponibles pour cette question, produites par le notebook :
+%   \val{jeu1-n-a}  \val{jeu1-n-b}  \val{jeu1-taux-a}  \val{jeu1-taux-b}
+%   \val{jeu1-ecart}
+% Les inserer dans la redaction plutot que de retaper les chiffres.
+Le figure suivante présente le taux de réussite global pondéré pour les deux méthodes.
+On constate que la méthode B est plus efficace que la méthode A.
+On constate une quasi inversion de la figure 1.
+Avec la pondération, on recommande donc la méthode B.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.42\textwidth}
+  \centering
+  \figplace[\linewidth]{figures/jeu1_reussite_ponderee.pdf}
+  \captionof{figure}{Taux de réussite globale pondéré.}
+  \label{fig:jeu1-reussite-pondéré}
+\end{minipage}
 
 \qst{Reprise avec une autre variable (Q5)}
 \ph{Variable retenue parmi \textsf{age}, \textsf{region} et
