@@ -282,10 +282,19 @@ La température avec la consommation minimale est de \val{jeu2-temp-min} degrée
   \label{tab:jeu2-correlations}
   \tbl{jeu2-Q5-correlations}
 \end{table}
+La table \ref{tab:jeu2-correlations} montre les coefficients de corrélation entre la consommation, l'occupation, la journée de semaine non fériée et la température.
+On constate que les jours de semaines non fériées et l'occupation on une corrélation près de 1.
+Ils ont également un corrélation très similaire avec la consommation.
+On peut donc fortement suspecté qu'ils sont collinéaire et affectent la consommation de la même manière.
+On constate également que les deux facteurs ont une corrélation quasi nul avec la température, indiquant un risque faible de collinéarité avec la température.
+Ceci est important pour assuré que les facteur n'affecte pas la consommation de la même manière que la température, et donc ne fausse pas l'analyse de la corrélation entre la consommation et la température.
+
  
 
-\qst{Ce que ce jeu apprend sur le coefficient de corrélation (Q6)}
-\ph{Ce qu'il faut retenir quant à l'usage de $r$.}
+\subsection{Ce que ce jeu apprend sur le coefficient de corrélation (Q6)}
+Cette section démontre que plusieurs choses peuvent affecter une variable.
+Il est donc important de valider ce qui affecte quoi comment pour assuré que les corrélations sont bien interprétées.
+Deux vairable qui affecte une troisième variable peuvent avoir des corrélations très différentes avec cette variable, mais ne sont pas nécessairement corrélées entre elles.
 
 % =====================================================================
 \section{Dossiers de patients d'une clinique}
