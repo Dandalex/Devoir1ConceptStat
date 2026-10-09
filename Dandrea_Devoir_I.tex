@@ -74,7 +74,7 @@
   \ifcsname val@#1\endcsname
     \csname val@#1\endcsname
   \else
-    {\color{red}\bfseries[?#1]}%
+    {\color{red}\textbf{[?#1]}}%
   \fi}
 \IfFileExists{resultats/valeurs.tex}{\input{resultats/valeurs.tex}}{}
 
@@ -231,8 +231,10 @@ Une comparaison avec les niveau initiaux par région serait nécessaire pour con
 % Q1-Q6 : correlation, nuage de points, correlation par groupe de
 %         temperature, minimum, occupation/jour_ferie, lecon sur r.
 
-\qst{Corrélation température--consommation (Q1)}
-\ph{Valeur de $r$ et son interprétation en une phrase.}
+\subsection{Corrélation température--consommation (Q1)}
+
+Le coefficient de corrélation de la température et de la consommation est de $r = \val{correlation-coef}$.
+Ce coefficient est positif, mais très faible, indiquant une corrélation positive quasi-nul.
 
 \qst{Nuage de points (Q2)}
 \ph{Forme du nuage et confrontation avec la valeur de $r$ obtenue en Q1.}
