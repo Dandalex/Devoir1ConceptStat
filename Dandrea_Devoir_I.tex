@@ -12,13 +12,15 @@
 %  Compilation :  tectonic rapport.tex     (ou pdflatex deux fois)
 %  Figures en PDF ou PNG -- pas d'EPS, tectonic ne les lit pas.
 % =====================================================================
-\documentclass[12pt,letterpaper]{article}
+% [IA] Code généré par Claude : police 11pt (au lieu de 12pt) pour respecter la limite de 6 pages
+\documentclass[11pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{lmodern}
-\usepackage[left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+% [IA] Code généré par Claude : marges de 2 cm (au lieu de 3 et 2,5 cm) pour respecter la limite de 6 pages
+\usepackage[margin=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath}
@@ -45,6 +47,19 @@
 \clubpenalty=10000
 
 \captionsetup{font=small,labelfont=bf,skip=4pt}
+
+% [IA] Code généré par Claude : espacements resserrés (titres, flottants, paragraphes) pour respecter la limite de 6 pages
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.6ex plus .4ex minus .2ex}{.8ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus .3ex minus .2ex}{.5ex}
+\titleformat{\subsubsection}[runin]{\normalfont\normalsize\bfseries}{\thesubsubsection}{.5em}{}[.]
+\titlespacing*{\subsubsection}{0pt}{.8ex plus .2ex minus .2ex}{.5em}
+\titlespacing*{\paragraph}{0pt}{1ex plus .2ex minus .2ex}{1em}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\parskip}{0pt}
+\captionsetup{skip=3pt}
 
 % --- Outils de redaction ---------------------------------------------
 
@@ -160,7 +175,7 @@ Si on regarde uniquement cette information, la méthode A serait a recommander.
 \end{minipage}\hfill
 \begin{minipage}[c]{0.42\textwidth}
   \centering
-  \figplace[\linewidth]{figures/jeu1_reussite.pdf}
+  \figplace[0.8\linewidth]{figures/jeu1_reussite.pdf}
   \captionof{figure}{Taux de réussite globale.}
   \label{fig:jeu1-reussite}
 \end{minipage}
@@ -177,7 +192,7 @@ Si on regarde uniquement cette information, la méthode A serait a recommander.
 \end{minipage}\hfill
 \begin{minipage}[c]{0.54\textwidth}
   \centering
-  \figplace[\linewidth]{figures/jeu1_niveau.pdf}
+  \figplace[0.8\linewidth]{figures/jeu1_niveau.pdf}
   \captionof{figure}{Résultats par niveau initial.}
   \label{fig:jeu1-niveau}
 \end{minipage}
@@ -193,7 +208,7 @@ Cela donne un plus grand nombre de réussites pour la méthode A, mais ce n'est 
 Vue que la méthode B est plus efficace pour tout les niveaux, on recommande donc la méthode B.
 
 \subsection{Taux standardisés (Q4)}
-\begin{minipage}[c]{0.60\textwidth}
+\begin{minipage}[c]{0.50\textwidth}
 
 % Cles disponibles pour cette question, produites par le notebook :
 %   \val{jeu1-n-a}  \val{jeu1-n-b}  \val{jeu1-taux-a}  \val{jeu1-taux-b}
@@ -204,9 +219,9 @@ On constate que la méthode B est plus efficace que la méthode A.
 On constate une quasi inversion de la figure 1.
 Avec la pondération, on recommande donc la méthode B.
 \end{minipage}\hfill
-\begin{minipage}[c]{0.25\textwidth}
+\begin{minipage}[c]{0.45\textwidth}
   \centering
-  \figplace[\linewidth]{figures/jeu1_reussite_ponderee.pdf}
+  \figplace[0.8\linewidth]{figures/jeu1_reussite_ponderee.pdf}
   \captionof{figure}{Taux de réussite globale pondéré.}
   \label{fig:jeu1-reussite-pondéré}
 \end{minipage}
@@ -222,7 +237,7 @@ Une comparaison avec les niveau initiaux par région serait nécessaire pour con
 \end{minipage}\hfill
 \begin{minipage}[c]{0.55\textwidth}
   \centering
-  \figplace[\linewidth]{figures/jeu1_region.pdf}
+  \figplace[0.8\linewidth]{figures/jeu1_region.pdf}
   \captionof{figure}{Taux de réussite par région.}
   \label{fig:jeu1-region}
 \end{minipage}
@@ -246,7 +261,7 @@ Ceci semble refleter le fait que l'immeuble est chauffé lorsque la température
 \end{minipage}\hfill
 \begin{minipage}[c]{0.55\textwidth}
   \centering
-  \figplace[\linewidth]{figures/jeu2_nuage_conso_temperature.pdf}
+  \figplace[0.8\linewidth]{figures/jeu2_nuage_conso_temperature.pdf}
   \captionof{figure}{Nuage de points : consommation en fonction de la température.}
   \label{fig:jeu2-correlation}
 \end{minipage}
@@ -263,7 +278,7 @@ La figure \ref{fig:jeu2_coefs_par_seuil} montre ces coefficients pour différent
 \end{minipage}\hfill
 \begin{minipage}[c]{0.40\textwidth}
   \centering
-  \figplace[\linewidth]{figures/jeu2_coefs_par_seuil.pdf}
+  \figplace[0.8\linewidth]{figures/jeu2_coefs_par_seuil.pdf}
   \captionof{figure}{Coefficients de corrélation par seuil de température.}
   \label{fig:jeu2_coefs_par_seuiln}
 \end{minipage}
@@ -417,8 +432,8 @@ Drolement, le 95\textsuperscript{e} centile est loin de la médiane, indiquant u
 
 \begin{figure}[H]
   \centering
-  \figplace[0.46\textwidth]{figures/jeu4_hist_lin.pdf}\hfill
-  \figplace[0.46\textwidth]{figures/jeu4_hist_log.pdf}
+  \figplace[0.36\textwidth]{figures/jeu4_hist_lin.pdf}\hfill
+  \figplace[0.36\textwidth]{figures/jeu4_hist_log.pdf}
   \caption{Distribution des latences : échelle linéaire (gauche) et
   logarithmique (droite).}
   \label{fig:jeu4-hist}
@@ -439,24 +454,28 @@ Ensuite la figure logarithmique, on constate deux pics, un a gauche, et un plus 
   \tbl{jeu4-Q3-version}
 \end{table}
 
-La table \ref{tab:jeu4-version} montre la latence par version du service.
+
+
+% [IA] Code généré par Claude : texte et figure des histogrammes par version côte à côte (minipage, \figplace, \captionof)
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+
+  La table \ref{tab:jeu4-version} montre la latence par version du service.
 On constate que la version 2.4.0 a une latence moyenne et médiane beaucoup plus élevée que 2.3.1.
 On constate également que la version 2.4.0 a un écart-type beaucoup plus élevé que 2.3.1.
-Cela peut expliquer la forme.
+Cela peut expliquer la forme.  
 
-La figure \ref{fig:jeu4-version} montre la distribution des latences par version du service.
+  La figure \ref{fig:jeu4-version} montre la distribution des latences par version du service.
 On constate que les deux version on deux pics, mais le pic plus lent pour la version 2.4.0 est beaucoup plus grand que celui de la version 2.3.1.
-
-
-% [IA] Code généré par Claude : insertion de la figure des histogrammes par version du service (jeu 4, Q3)
-\begin{figure}[H]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.60\textwidth}
   \centering
-  \figplace[0.75\textwidth]{figures/jeu4_hist_version.pdf}
-  \caption{Distribution des latences par version du service : échelle
+  \figplace[\linewidth]{figures/jeu4_hist_version.pdf}
+  \captionof{figure}{Distribution des latences par version du service : échelle
     linéaire (haut) et logarithmique (bas). Axes des ordonnées propres à
     chaque panneau.}
   \label{fig:jeu4-version}
-\end{figure}
+\end{minipage}
 
 
 \subsection{Indicateur unique à mettre sous surveillance (Q4)}
