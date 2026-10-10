@@ -193,7 +193,7 @@ Cela donne un plus grand nombre de réussites pour la méthode A, mais ce n'est 
 Vue que la méthode B est plus efficace pour tout les niveaux, on recommande donc la méthode B.
 
 \subsection{Taux standardisés (Q4)}
-\begin{minipage}[c]{0.55\textwidth}
+\begin{minipage}[c]{0.60\textwidth}
 
 % Cles disponibles pour cette question, produites par le notebook :
 %   \val{jeu1-n-a}  \val{jeu1-n-b}  \val{jeu1-taux-a}  \val{jeu1-taux-b}
@@ -204,7 +204,7 @@ On constate que la méthode B est plus efficace que la méthode A.
 On constate une quasi inversion de la figure 1.
 Avec la pondération, on recommande donc la méthode B.
 \end{minipage}\hfill
-\begin{minipage}[c]{0.42\textwidth}
+\begin{minipage}[c]{0.25\textwidth}
   \centering
   \figplace[\linewidth]{figures/jeu1_reussite_ponderee.pdf}
   \captionof{figure}{Taux de réussite globale pondéré.}
@@ -301,28 +301,57 @@ Deux vairable qui affecte une troisième variable peuvent avoir des corrélation
 % Q1-Q6 : description et anomalies, nettoyage documente, moyenne/mediane
 %         de l'age, correlation age-tension avant/apres, IMC, tabagisme.
 
-\qst{Description et anomalies détectées (Q1)}
-\ph{Description statistique de chaque colonne numérique, minimum et maximum
-compris ; anomalies détaillées au tableau~\ref{tab:jeu3-anomalies}.}
+\subsection{Description et anomalies détectées (Q1)}
 
+% [IA] Code généré par Claude : insertion du tableau de description des dossiers de patients
 \begin{table}[H]
   \centering\small
-  \caption{Anomalies relevées : nature, volume et méthode de détection.}
-  \label{tab:jeu3-anomalies}
-  \begin{tabular}{llrl}
-    \toprule
-    Colonne & Nature de l'anomalie & Lignes & Détection\\
-    \midrule
-     &  &  & \\
-     &  &  & \\
-     &  &  & \\
-    \bottomrule
-  \end{tabular}
+  \caption{Description statistique des colonnes numériques des dossiers de
+    patients (données brutes).}
+  \label{tab:jeu3-description}
+  \tbl{jeu3-Q1-description}
 \end{table}
+Le tableau \ref{tab:jeu3-description} montre la description statistique des colonnes numériques des dossiers de patients.
+On constate que l'équart type de l'âge est impossible, ainsi que son maximum.
+fort probablement il y a des valeurs de 999 pour l'âge, ce qui est une valeur aberrante.
+On constate également que la tension a un minimum de -1, ce qui est impossible.
+Ensuite, on constate que la taille minimum est de 1.5.
+Ceci est impossible, et doit être invesigué.
+Le traitement de ces anomalies est décrit dans la section suivante.
+Tabagisme et sexe sont des variables catégorielles, et ne sont pas décrites dans le tableau.
+Ils comporte uniquement les même valeurs que celles décrites dans l'énoncé, et ne comportent pas d'anomalies.
 
-\qst{Préparation des données (Q2)}
-\ph{Chaque décision documentée : ce qui est retiré, ce qui est corrigé, et
-le nombre de lignes restantes.}
+
+\subsection{Préparation des données (Q2)}
+Pour tout les anomalies, les détails des valuers peuvent être trouvés dans le notebook.
+La technique de IQR a été utilisé pour détecter les valeurs aberrantes.
+Après nettoyage 771 des 800 patient demeurent dans l'analyse.
+\subsubsection{Age}
+L'âge et la tension ont eu le même processus de nettoyage.
+Pour l'âge, Nous avons regardés les voisins les plus près, avec moins de 5 kg de différence (avec les mêmes sexe et tabagisme).
+Avec ces voisins, nous avons calculé la distance standardisé avec les voisins.
+Nous avons ensuite fait une moyenne pondérée des âges des voisins.
+Les patients avec des voisins trop loin on été exclus. 
+Au total 15 patient ont été exclus pour l'âge.
+25 patient ont eu leur âge imputé par la moyenne pondérée de leurs voisins.
+\subsubsection{Tension}
+Pour la tension, nous avons regardés les voisins les plus près, avec moins de 5 ans de différence (avec les mêmes sexe et tabagisme).
+Avec ces voisins, nous avons calculé la distance standardisé avec les voisins, comme avec l'âge.
+Nous avons ensuite fait une moyenne pondérée des tensions des voisins.
+Les patients avec des voisins trop loin on été exclus.
+Au total 14 patient ont été exclus pour la tension.
+11 patient ont eu leur tension imputée par la moyenne pondérée de leurs voisins.
+\subsubsection{Taille}
+La taille comportait des valeurs supperieures et inférieurs au bornes de IQR.
+Les valeurs suppérieurs était a moins d'une cm de la bornes. 
+Ils ont donc été inclus dans l'analyse.
+Les valeur inférieurs étaient entre 1.54 et 1.92. 
+Si on suppose que les valeurs étaient en m au lieu de cm, alors les valeurs sont entre 154 et 192 cm, ce qui est plausible.
+Nous avons donc multiplié les valeurs inférieurs par 100 pour les mettre en cm.
+\subsubsection{Poids}
+Les valeurs abérantes en poids étaient toutes supperieures à la bornes de IQR.
+Les valeurs sont moins de 5 kg de la bornes, et sont donc plausibles.
+Ils ont donc été inclus dans l'analyse.
 
 \qst{Âge : moyenne et médiane, avant et après (Q3)}
 \ph{Les quatre valeurs et un commentaire sur les écarts.}
@@ -343,17 +372,9 @@ le sexe.}
 % Q1-Q4 : moyenne/mediane/p95, histogrammes lin et log, explication de
 %         la forme, choix d'un indicateur unique.
 
-\qst{Moyenne, médiane et 95\textsuperscript{e} centile (Q1)}
-\ph{Les trois valeurs, le nombre de requêtes situées à moins de 10\,\% de la
-moyenne, et ce que ce dénombrement apprend sur la moyenne comme résumé.}
-% [IA] Code généré par Claude : insertion du tableau de description des dossiers de patients
-\begin{table}[H]
-  \centering\small
-  \caption{Description statistique des colonnes numériques des dossiers de
-    patients (données brutes).}
-  \label{tab:jeu3-description}
-  \tbl{jeu3-Q1-description}
-\end{table}
+\subsection{Moyenne, médiane et 95\textsuperscript{e} centile (Q1)}
+
+
 
 \qst{Histogrammes en échelle linéaire et logarithmique (Q2)}
 \ph{Ce que chaque représentation permet de voir.}
